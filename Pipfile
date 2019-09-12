@@ -12,6 +12,9 @@ notion = "*"
 pep8 = "*"
 pylint = "*"
 pre-commit = "*"
+python-dotenv = "*"
+omdb = "*"
+simplejson = "*"
 
 [requires]
 python_version = "3.7"
