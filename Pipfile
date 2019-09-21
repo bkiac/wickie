@@ -15,6 +15,9 @@ pre-commit = "*"
 python-dotenv = "*"
 omdb = "*"
 simplejson = "*"
+goodreads = "*"
+beautifulsoup4 = "*"
+python-dateutil = "*"
 
 [requires]
 python_version = "3.7"

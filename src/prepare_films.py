@@ -3,10 +3,11 @@ import re
 import simplejson as json
 import datetime
 
-import settings
+from settings import folder
 
 
 def parse_date(date_str):
+    # e.g.: 30 Jan 2009
     return datetime.datetime.strptime(date_str, "%d %b %Y")
 
 
@@ -38,7 +39,7 @@ def prepare_film(film):
 
 
 def prepare_films():
-    films_json = os.path.join(settings.folder, "films.json")
+    films_json = os.path.join(folder, "films.json")
     with open(films_json, "r") as f:
         films = json.load(f)
         prepared_films = [prepare_film(f) for f in films]

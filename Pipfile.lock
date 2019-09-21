@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "34972ec71492d0024369343a453c3c8c926cd80c27bdda5287e7314b8d770498"
+            "sha256": "7f4ddf841120e0ea1c34fc24c0154fe0d2a99765dea8f14be7c711d0829a88cc"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -36,6 +36,7 @@
                 "sha256:25288c9e176f354bf277c0a10aa96c782a6a18a17122dba2e8cec4a97e03343b",
                 "sha256:f040590be10520f2ea4c2ae8c3dae441c7cfff5308ec9d58a0ec0c1b8f81d469"
             ],
+            "index": "pypi",
             "version": "==4.8.0"
         },
         "bs4": {
@@ -53,10 +54,10 @@
         },
         "certifi": {
             "hashes": [
-                "sha256:046832c04d4e752f37383b628bc601a7ea7211496b4638f6514d0e5b9acc4939",
-                "sha256:945e3ba63a0b9f577b1395204e13c3a231f9bc0223888be653286534e5873695"
+                "sha256:e4f3620cfea4f83eedc95b24abd9cd56f3c4b146dd0177e83a21b4eb49e21e50",
+                "sha256:fd7c7c74727ddcf00e9acd26bba8da604ffec95bf1c2144e67aff7a8b50e6cef"
             ],
-            "version": "==2019.6.16"
+            "version": "==2019.9.11"
         },
         "cfgv": {
             "hashes": [
@@ -92,6 +93,13 @@
             ],
             "version": "==0.17.1"
         },
+        "goodreads": {
+            "hashes": [
+                "sha256:3a0b311a0b1a6b35bbff09b9e67e80a76ecb77720b2e81a682ac5e018ad35445"
+            ],
+            "index": "pypi",
+            "version": "==0.3.2"
+        },
         "identify": {
             "hashes": [
                 "sha256:4f1fe9a59df4e80fcb0213086fcf502bc1765a01ea4fe8be48da3b65afd2a017",
@@ -108,10 +116,10 @@
         },
         "importlib-metadata": {
             "hashes": [
-                "sha256:9ff1b1c5a354142de080b8a4e9803e5d0d59283c93aed808617c787d16768375",
-                "sha256:b7143592e374e50584564794fcb8aaf00a23025f9db866627f89a21491847a8d"
+                "sha256:652234b6ab8f2506ae58e528b6fbcc668831d3cc758e1bc01ef438d328b68cdb",
+                "sha256:6f264986fb88042bc1f0535fa9a557e6a376cfe5679dc77caac7fe8b5d43d05f"
             ],
-            "version": "==0.20"
+            "version": "==0.22"
         },
         "isort": {
             "hashes": [
@@ -163,6 +171,14 @@
             ],
             "version": "==1.3.3"
         },
+        "nose": {
+            "hashes": [
+                "sha256:9ff7c6cc443f8c51994b34a667bbcf45afd6d945be7477b52e97516fd17c53ac",
+                "sha256:dadcddc0aefbf99eea214e0f1232b94f2fa9bd98fa8353711dacb112bfcbbb2a",
+                "sha256:f1bffef9cbc82628f6e7d7b40d7e255aefaa1adb6a1b1d26c69a8b79e6208a98"
+            ],
+            "version": "==1.3.7"
+        },
         "notion": {
             "hashes": [
                 "sha256:06c9709451ee5dde51681d6e12fb4549f769534c231f61d4f61a15ed3df238f0",
@@ -203,6 +219,14 @@
             "index": "pypi",
             "version": "==2.3.1"
         },
+        "python-dateutil": {
+            "hashes": [
+                "sha256:7e6584c74aeed623791615e26efd690f29817a27c73085b78e4bad02493df2fb",
+                "sha256:c89805f6f4d64db21ed966fda138f8a5ed7a4fdbc1a8ee329ce1b74e3c74da9e"
+            ],
+            "index": "pypi",
+            "version": "==2.8.0"
+        },
         "python-dotenv": {
             "hashes": [
                 "sha256:debd928b49dbc2bf68040566f55cdb3252458036464806f4094487244e2a4093",
@@ -241,6 +265,13 @@
                 "sha256:f81025eddd0327c7d4cfe9b62cf33190e1e736cc6e97502b3ec425f574b3e7a8"
             ],
             "version": "==5.1.2"
+        },
+        "rauth": {
+            "hashes": [
+                "sha256:524cdbc1c28560eacfc9a9d40c59525eb8d00fdf07fbad86107ea24411477b0a",
+                "sha256:b18590fbd77bc3d871936bbdb851377d1b0c08e337b219c303f8fc2b5a42ef2d"
+            ],
+            "version": "==0.7.3"
         },
         "requests": {
             "hashes": [
@@ -342,6 +373,13 @@
                 "sha256:565a021fd19419476b9362b05eeaa094178de64f8361e44468f9e9d7843901e1"
             ],
             "version": "==1.11.2"
+        },
+        "xmltodict": {
+            "hashes": [
+                "sha256:50d8c638ed7ecb88d90561beedbf720c9b4e851a9fa6c47ebd64e99d166d8a21",
+                "sha256:8bbcb45cc982f48b2ca8fe7e7827c5d792f217ecf1792626f808bf41c3b86051"
+            ],
+            "version": "==0.12.0"
         },
         "zipp": {
             "hashes": [
