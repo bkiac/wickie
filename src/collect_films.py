@@ -3,10 +3,7 @@ import csv
 import simplejson as json
 from omdb import OMDBClient
 
-from settings import folder, OMDB_API_KEY
-
-films_csv = os.path.join(folder, "films.csv")
-films_json = os.path.join(folder, "films.json")
+from settings import films_csv, films_json, OMDB_API_KEY
 
 omdb = OMDBClient(apikey=OMDB_API_KEY)
 
