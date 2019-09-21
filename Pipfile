@@ -18,6 +18,7 @@ simplejson = "*"
 goodreads = "*"
 beautifulsoup4 = "*"
 python-dateutil = "*"
+python-telegram-bot = "*"
 
 [requires]
 python_version = "3.7"

@@ -3,8 +3,6 @@ import simplejson as json
 import re
 from dateutil.parser import parse as parse_date
 
-from settings import books_json, films_json
-
 
 def prepare_date(date):
     return parse_date(date) if date != "?" and date != "" else None
@@ -64,17 +62,17 @@ def prepare_book_for_api(book):
     return prepare_book(book)
 
 
-def prepare_items(json_file, prepare):
-    with open(json_file, "r") as f:
-        return [prepare(i) for i in json.load(f)]
+# def prepare_items(json_file, prepare):
+#     with open(json_file, "r") as f:
+#         return [prepare(i) for i in json.load(f)]
 
 
-def prepare_books_for_api():
-    return prepare_items(books_json, prepare_book_for_api)
+# def prepare_books_for_api():
+#     return prepare_items(books_json, prepare_book_for_api)
 
 
-def prepare_books_for_merge():
-    return prepare_items(books_json, prepare_book_for_merge)
+# def prepare_books_for_merge():
+#     return prepare_items(books_json, prepare_book_for_merge)
 
 
 def sanitize_creator(creator):
@@ -121,9 +119,9 @@ def prepare_film_for_merge(film):
     }
 
 
-def prepare_films_for_api():
-    return prepare_items(films_json, prepare_film_for_api)
+# def prepare_films_for_api():
+#     return prepare_items(films_json, prepare_film_for_api)
 
 
-def prepare_films_for_merge():
-    return prepare_items(films_json, prepare_film_for_merge)
+# def prepare_films_for_merge():
+#     return prepare_items(films_json, prepare_film_for_merge)

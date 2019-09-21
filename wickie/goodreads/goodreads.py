@@ -6,11 +6,7 @@ import re
 from dateutil.parser import parse as parse_date
 import urllib.parse
 
-from settings import GOODREADS_API_KEY, GOODREADS_API_SECRET, folder
-
-
-def format_date(datetime):
-    return datetime.strftime("%Y/%m/%d")
+from wickie.settings import GOODREADS_API_KEY, GOODREADS_API_SECRET
 
 
 def create_book_url(title):
