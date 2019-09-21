@@ -6,12 +6,12 @@ verify_ssl = true
 [dev-packages]
 black = "*"
 flake8 = "*"
-
-[packages]
-notion = "*"
 pep8 = "*"
 pylint = "*"
 pre-commit = "*"
+
+[packages]
+notion = "*"
 python-dotenv = "*"
 omdb = "*"
 simplejson = "*"

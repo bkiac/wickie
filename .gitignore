@@ -2,4 +2,4 @@
 .env
 __pycache__
 *.pyc
-wickie.code-workspace
+*.code-workspace
