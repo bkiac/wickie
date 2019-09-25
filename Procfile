@@ -1,1 +1,1 @@
-web: python -m wickie
+worker: python -m wickie
