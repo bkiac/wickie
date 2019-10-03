@@ -1,4 +1,4 @@
-import wickie.bot.echobot as bot
+import wickie.bot as bot
 
 
 def main():

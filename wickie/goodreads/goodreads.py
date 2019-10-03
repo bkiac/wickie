@@ -1,12 +1,23 @@
-import simplejson as json
+import re
 import requests
+
+import simplejson as json
 import xmltodict
 from bs4 import BeautifulSoup
-import re
 from dateutil.parser import parse as parse_date
 import urllib.parse
 
 from wickie.settings import GOODREADS_API_KEY, GOODREADS_API_SECRET
+
+
+r_goodreads_url = r"https?://(w{3}\.)?goodreads\.com/book/show/([0-9]+)-(.*)"
+
+
+def match_url(url):
+    match = re.fullmatch(r_goodreads_url, url)
+    if match:
+        return url
+    return None
 
 
 def create_book_url(title):
