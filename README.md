@@ -1,8 +1,14 @@
-# [Wickie](https://www.notion.so/bkiac/Wickie-73dd1350904945e480900e2f9d93fe82)
+# Wickie
 
+![](demo.gif)
+
+## How to Start
 ```bash
  $ pipenv install
  $ pipenv shell
  $ pre-commit install
+ # Start nodemon watcher:
+ $ ./watch.sh
+ # or just run it once:
  $ python3 -m wickie
 ```
