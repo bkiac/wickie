@@ -98,8 +98,8 @@ def handle_unknown(update, context):
 @restricted
 def handle_error(update, context):
     """Log Errors caused by Updates."""
-    logger.warning('Update "%s" caused error "%s"', update, context.error)
-    traceback.print_exc()
+    logger.warning(f'Update "{update}" caused error "{context.error}"')
+    logger.warning(f"Trace: {traceback.format_exc()}")
 
 
 def launch():
