@@ -2,7 +2,6 @@ import os
 import re
 from enum import Enum
 
-import simplejson as json
 from dateutil.parser import parse as parse_date
 
 
