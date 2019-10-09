@@ -1,5 +1,6 @@
 import re
 import logging
+import traceback
 
 from telegram import ReplyKeyboardRemove
 from telegram.ext import (
@@ -26,7 +27,7 @@ from wickie.settings import TELEGRAM_BOT_TOKEN
 import wickie.notionutils.prepare as prepare_for_notion
 from wickie.notionutils.add import add as add_to_notion
 import wickie.omdb as omdb
-import wickie.goodreads.goodreads as goodreads
+import wickie.goodreads as goodreads
 
 
 @restricted
@@ -41,25 +42,31 @@ def handle_help(update, context):
     update.message.reply_text("Help!")
 
 
-@restricted
-def handle_imdb(update, context):
-    """Handle IMDb link."""
-    imdb_id = omdb.extract_id(update.message.text)
-    film = prepare_for_notion.film(omdb_client.get(imdbid=imdb_id))
+def handle_potential_page(page, update, context):
+    """Handle common operations for IMDb and Goodreads handlers."""
     update.message.reply_text(
-        prettier(film), reply_markup=create_confirmation_keyboard()
+        prettier(page), reply_markup=create_confirmation_keyboard()
     )
     update.message.reply_text("Looks good? 🔍")
-    context.user_data[NEW_PAGE_KEY] = film
+    context.user_data[NEW_PAGE_KEY] = page
     return CONFIRMATION_STATE
 
 
 @restricted
+@send_typing_action
+def handle_imdb(update, context):
+    """Handle IMDb URL."""
+    imdb_id = omdb.extract_id(update.message.text)
+    film = prepare_for_notion.film(omdb_client.get(imdbid=imdb_id))
+    return handle_potential_page(film, update, context)
+
+
+@restricted
+@send_typing_action
 def handle_goodreads(update, context):
-    """Handle Goodreads link."""
-    return update.message.reply_text(
-        "Goodreads: {}".format(update.message.text)
-    )
+    """Handle Goodreads URL."""
+    book = prepare_for_notion.book(goodreads.get(update.message.text))
+    return handle_potential_page(book, update, context)
 
 
 @restricted
@@ -71,6 +78,7 @@ def handle_accept(update, context):
         update.message.reply_text(f"Check out your new page at: {url} 👀")
     except Exception:  # TODO Catch more specific exception
         update.message.reply_text("Something has went wrong! 🤦‍♀️")
+        traceback.print_exc()
     context.user_data.clear()
     return ConversationHandler.END
 
@@ -91,6 +99,7 @@ def handle_unknown(update, context):
 def handle_error(update, context):
     """Log Errors caused by Updates."""
     logger.warning('Update "%s" caused error "%s"', update, context.error)
+    traceback.print_exc()
 
 
 def launch():
@@ -104,7 +113,10 @@ def launch():
 
     ch = ConversationHandler(
         entry_points=[
-            MessageHandler(Filters.regex(omdb.r_imdb_url), handle_imdb)
+            MessageHandler(Filters.regex(omdb.r_imdb_url), handle_imdb),
+            MessageHandler(
+                Filters.regex(goodreads.r_goodreads_url), handle_goodreads
+            ),
         ],
         states={
             CONFIRMATION_STATE: [
@@ -116,15 +128,7 @@ def launch():
     )
     dp.add_handler(ch)
 
-    dp.add_handler(MessageHandler(Filters.regex(omdb.r_imdb_url), handle_imdb))
-    # dp.add_handler(
-    #     MessageHandler(
-    #         Filters.regex(goodreads.r_goodreads_url), handle_goodreads
-    #     )
-    # )
-
     dp.add_handler(MessageHandler(Filters.text, handle_unknown))
-
     dp.add_error_handler(handle_error)
 
     updater.start_polling()
