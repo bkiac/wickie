@@ -1,2 +1,2 @@
-# If nodemon is globall installed
-nodemon -e py --exec "python3 -m" wickie
+# If nodemon is globally installed
+nodemon -e py --exec "python -m" wickie

@@ -3,6 +3,7 @@
 ![](demo.gif)
 
 ## How to Start
+
 ```bash
  $ pipenv install
  $ pipenv shell
@@ -10,5 +11,5 @@
  # Start nodemon watcher:
  $ ./watch.sh
  # or just run it once:
- $ python3 -m wickie
+ $ python -m wickie
 ```
