@@ -57,8 +57,15 @@ def handle_potential_page(page, update, context):
 def handle_imdb(update, context):
     """Handle IMDb URL."""
     imdb_id = omdb.extract_id(update.message.text)
-    film = prepare_for_notion.film(omdb_client.get(imdbid=imdb_id))
-    return handle_potential_page(film, update, context)
+    omdb_response = omdb_client.get(imdbid=imdb_id)
+
+    page = None
+    if omdb_response["type"] == "series":
+        page = prepare_for_notion.series(omdb_response)
+    if omdb_response["type"] == "movie":
+        page = prepare_for_notion.film(omdb_response)
+
+    return handle_potential_page(page, update, context)
 
 
 @restricted

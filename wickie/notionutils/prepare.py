@@ -61,30 +61,29 @@ def book(scraped_book):
     return dict([name, category, status, link, year, cover, genres, authors])
 
 
-def film(omdb_film):
-    name = (props["name"], omdb_film["title"])
-    category = (props["category"], "Film")
+def _omdb_common(omdb_response):
+    name = (props["name"], omdb_response["title"])
     status = (props["status"], "Not Started")
-    link = (props["link"], f'https://imdb.com/title/{omdb_film["imdb_id"]}')
-    year = (props["year"], int(omdb_film["year"]))
-    cover = (props["cover"], omdb_film["poster"])
-    genres = (props["genres"], _genres(omdb_film["genre"]))
-    date = (props["date"], parse_date(omdb_film["released"]))
+    link = (
+        props["link"],
+        f'https://imdb.com/title/{omdb_response["imdb_id"]}',
+    )
+    date = (props["date"], parse_date(omdb_response["released"]))
+    year = (props["year"], int(date[1].year))
+    cover = (props["cover"], omdb_response["poster"])
+    genres = (props["genres"], _genres(omdb_response["genre"]))
+    actors = (props["actors"], _celebrities(omdb_response["actors"]))
+    return [name, status, link, year, cover, genres, date, actors]
+
+
+def film(omdb_film):
+    category = (props["category"], "Film")
     directors = (props["directors"], _celebrities(omdb_film["director"]))
     writers = (props["writers"], _celebrities(omdb_film["writer"]))
-    actors = (props["actors"], _celebrities(omdb_film["actors"]))
-    return dict(
-        [
-            name,
-            category,
-            status,
-            link,
-            year,
-            cover,
-            genres,
-            date,
-            directors,
-            writers,
-            actors,
-        ]
-    )
+    return dict(_omdb_common(omdb_film) + [category, directors, writers])
+
+
+def series(omdb_series):
+    category = (props["category"], "Series")
+    creators = (props["creators"], _celebrities(omdb_series["writer"]))
+    return dict(_omdb_common(omdb_series) + [category, creators])
