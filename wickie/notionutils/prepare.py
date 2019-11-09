@@ -25,7 +25,7 @@ props = {
     "start_date": "Start Date",
     "finish_date": "Finish Date",
     "score": "Score",
-    "summary": "Summary",
+    "description": "Description",
 }
 
 
@@ -73,7 +73,8 @@ def _omdb_common(omdb_response):
     cover = (props["cover"], omdb_response["poster"])
     genres = (props["genres"], _genres(omdb_response["genre"]))
     actors = (props["actors"], _celebrities(omdb_response["actors"]))
-    return [name, status, link, year, cover, genres, date, actors]
+    description = (props["description"], omdb_response["plot"])
+    return [name, status, link, year, cover, genres, date, actors, description]
 
 
 def film(omdb_film):
