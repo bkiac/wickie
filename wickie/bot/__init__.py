@@ -79,7 +79,7 @@ def handle_goodreads(update, context):
 @restricted
 @send_typing_action
 def handle_accept(update, context):
-    update.message.reply_text("Great! Adding to Notion... 🔦")
+    update.message.reply_text("Great! Creating a Notion page... 🔦")
     try:
         url = add_to_notion(context.user_data[NEW_PAGE_KEY])
         update.message.reply_text(f"Check out your new page at: {url} 👀")
